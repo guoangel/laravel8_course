@@ -42,7 +42,7 @@ $posts = [
       'is_new' => false
     ]
   ];
-  Route::resource('posts', PostsController::class);
+  Route::resource('/posts', PostsController::class);
 // Route::get('/posts', function () use ($posts) {
 //   // dd(request()->all());
 //   dd((int)request()->query('page', 1));
