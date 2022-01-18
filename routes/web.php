@@ -49,3 +49,7 @@ $posts = [
 //   // compact($posts) === ['posts' => $posts])
 //   return view('posts.index', ['posts' => $posts]);
 // });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

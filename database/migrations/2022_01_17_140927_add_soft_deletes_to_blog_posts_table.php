@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTitleContentToBlogPostsTable extends Migration
+class AddSoftDeletesToBlogPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,7 @@ class AddTitleContentToBlogPostsTable extends Migration
     public function up()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
-            $table->string('title')->default('');
-
-            if (env('DB_CONNECTION') === 'sqlite_testing') {
-                $table->text('content')->default('');
-            } else {
-                $table->text('content');
-            }
+            $table->softDeletes();
         });
     }
 
@@ -32,7 +26,7 @@ class AddTitleContentToBlogPostsTable extends Migration
     public function down()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
-            $table->dropColumn(['title', 'content']);
+            $table->dropSoftDeletes();
         });
     }
 }
