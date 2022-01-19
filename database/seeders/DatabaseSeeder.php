@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             $this->command->info('Database was refreshed');
         }
 
-        //Cache::tags(['blog-post'])->flush();
+        Cache::tags(['blog-post'])->flush();
 
         $this->call([
             UsersTableSeeder::class, 

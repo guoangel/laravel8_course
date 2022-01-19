@@ -3,14 +3,18 @@
 @section('title', $post->title)
 
 @section('content')
-<h1>{{ $post->title }}</h1>
+<h1>
+    {{ $post->title }}
+    @php
+        //<x-badge type="error" message="Brand new Post!" :show="now()->diffInMinutes($post->created_at) < 60"/>
+    @endphp
+    
+</h1>
+
 <p>{{ $post->content }}</p>
 <p>Added {{ $post->created_at->diffForHumans() }}</p>
 <p>By {{ $post->user->name }}</p>
-@if(now()->diffInMinutes($post->created_at) < 5)
-<div class="alert alert-info">New!</div>
-@endif
-
+<p>Currently read by {{ $counter }} people</p>
 <h4>Comments</h4>
 
 @forelse($post->comments as $comment)
