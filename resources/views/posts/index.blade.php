@@ -19,7 +19,7 @@
             </h3>
 
             <x-updated slot="" :name="$post->user->name" :date="$post->created_at"/>
-
+            <x-tags :tags="$post->tags"/>
             @if($post->comments_count)
                 <p>{{ $post->comments_count }} comments</p>
             @else
@@ -58,19 +58,7 @@
     @endforelse
     </div>
     <div class="col-4">
-        <div class="container">
-            <div class="row">
-                <x-card title="Most Commented" subtitle="What people are currently talking about" :items="$mostCommented"/>
-            </div>
-
-            <div class="row mt-4">
-                <x-card title="Most Active" subtitle="Users with most posts written" :items="collect($mostActive)->pluck('name')"/>
-            </div>
-
-            <div class="row mt-4">
-                <x-card title="Most Active Last Month" subtitle="Users with most posts written in the month" :items="collect($mostActiveLastMonth)->pluck('name')"/>
-            </div>
-        </div>
+        @include('posts._activity')
     </div>
 </div>    
 @endsection('content')

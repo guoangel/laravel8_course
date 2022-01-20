@@ -8,7 +8,7 @@
     @php
         //<x-badge type="error" message="Brand new Post!" :show="now()->diffInMinutes($post->created_at) < 60"/>
     @endphp
-    
+    <x-badge type="danger" message="Brand new Post!" :show="now()->diffInMinutes($post->created_at) < 1"/>
 </h1>
 
 <p>{{ $post->content }}</p>

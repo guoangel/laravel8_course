@@ -18,17 +18,17 @@ class Badge extends Component
      *
      * @var string
      */
-    public $slot;
+    public $message;
     public $show;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $slot, $show)
+    public function __construct($type, $message, $show)
     {
         $this->type = $type;
-        $this->slot = $slot;
+        $this->message = $message;
         $this->show = $show;
     }
 

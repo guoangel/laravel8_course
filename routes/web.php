@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PostTagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +44,7 @@ $posts = [
     ]
   ];
   Route::resource('/posts', PostsController::class);
+  Route::get('/posts/tag/{tag}', [PostTagController::class, 'index'])->name('posts.tags.index');
 // Route::get('/posts', function () use ($posts) {
 //   // dd(request()->all());
 //   dd((int)request()->query('page', 1));

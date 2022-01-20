@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Tag;
 
 class TagsTableSeeder extends Seeder
 {
@@ -13,6 +14,12 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $tags = collect(['Science', 'Sport', 'Politics', 'Entartainment', 'Economy']);
+
+        $tags->each(function ($tagName) {
+            $tag = new Tag();
+            $tag->name = $tagName;
+            $tag->save();
+        });
     }
 }
