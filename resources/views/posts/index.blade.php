@@ -18,7 +18,7 @@
                 @endif
             </h3>
 
-            <x-updated slot="" :name="$post->user->name" :date="$post->created_at"/>
+            <x-updated slot="" :name="$post->user->name" :date="$post->created_at" :userId="$post->user->id"/>
             <x-tags :tags="$post->tags"/>
             @if($post->comments_count)
                 <p>{{ $post->comments_count }} comments</p>

@@ -77,22 +77,22 @@ class UserController extends Controller
     public function update(UpdateUser $request, User $user)
     {
         dd($user);
-        if ($request->hasFile('avatar')) {
-            $path = $request->file('avatar')->store('avatars');
+        // if ($request->hasFile('avatar')) {
+        //     $path = $request->file('avatar')->store('avatars');
 
-            if ($user->image) {
-                $user->image->path = $path;
-                $user->image->save();
-            } else {
-                $user->image()->save(
-                    Image::make(['path' => $path])
-                );
-            }
-        }
+        //     if ($user->image) {
+        //         $user->image->path = $path;
+        //         $user->image->save();
+        //     } else {
+        //         $user->image()->save(
+        //             Image::make(['path' => $path])
+        //         );
+        //     }
+        // }
 
-        return redirect()
-            ->back()
-            ->withStatus('Profile image was updated!');
+        // return redirect()
+        //     ->back()
+        //     ->withStatus('Profile image was updated!');
     }
 
     /**

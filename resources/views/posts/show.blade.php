@@ -18,8 +18,8 @@
         @endif
 
         <p>{{ $post->content }}</p>
-        <x-updated slot="" :name="$post->user->name" :date="$post->created_at"/>
-        <x-updated slot="Updated" :name="$post->user->name" :date="$post->updated_at"/>
+        <x-updated slot="" :name="$post->user->name" :date="$post->created_at" :userId="$post->user->id"/>
+        <x-updated slot="Updated" :name="$post->user->name" :date="$post->updated_at" :userId="$post->user->id"/>
 
         <p>Currently read by {{ $counter }} people</p>
 

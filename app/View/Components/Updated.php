@@ -14,11 +14,14 @@ class Updated extends Component
     public $slot;
     public $date;
     public $name;
-    public function __construct($date, $slot, $name)
+    public $userId;
+    
+    public function __construct($date, $slot, $name, $userId)
     {
         $this->date = $date;
         $this->slot = $slot;
         $this->name = $name;
+        $this->userId = $userId;
     }
 
     /**
