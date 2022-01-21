@@ -7,29 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Scopes\DeletedAdminScope;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Traits\Taggable;
 class BlogPost extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Taggable;
+    
     protected $fillable = ['title', 'content', 'user_id'];
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable')->latest();
     }
+
     
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class)->withTimestamps();
-    }
     public function image()
     {
-        return $this->hasOne(Image::class);
+        return $this->morphOne(Image::class, 'imageable');
     }
     public function scopeLatest(Builder $query)
     {

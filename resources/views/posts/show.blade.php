@@ -24,17 +24,8 @@
         <p>Currently read by {{ $counter }} people</p>
 
         <h4>Comments</h4>
-
-        @include('comments._form')
-
-        @forelse($post->comments as $comment)
-            <p>
-                {{ $comment->content }}
-            </p>
-            <x-updated slot="" :name="$comment->user->name" :date="$comment->created_at"/>
-        @empty
-            <p>No comments yet!</p>
-        @endforelse
+        <x-comment-form :id="$post->id" :name="route('posts.comments.store', ['post' => $post->id])"/>
+        <x-comment-list :comments="$post->comments"/>
     </div>
     <div class="col-4">
         @include('posts._activity')

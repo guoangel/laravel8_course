@@ -6,6 +6,8 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PostTagController;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +49,9 @@ $posts = [
   Route::resource('/posts', PostsController::class);
   Route::get('/posts/tag/{tag}', [PostTagController::class, 'index'])->name('posts.tags.index');
   Route::resource('posts.comments', PostCommentController::class)->only(['store']);
+  Route::resource('users.comments', UserCommentController::class)->only(['store']);
+  Route::resource('users', UserController::class)->only(['show', 'edit', 'update']);
+
 // Route::get('/posts', function () use ($posts) {
 //   // dd(request()->all());
 //   dd((int)request()->query('page', 1));
