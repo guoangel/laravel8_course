@@ -26,10 +26,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="p-2 text-dark" href="{{ route('home.index') }}">Home</a>
-                <a class="p-2 text-dark" href="{{ route('home.contact') }}">Contact</a>
-                <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Posts</a>
-                <a class="p-2 text-dark" href="{{ route('posts.create') }}">Add Blog Post</a>
+                <a class="p-2 text-dark" href="{{ route('home.index') }}">{{ __('Home') }}</a>
+                <a class="p-2 text-dark" href="{{ route('home.contact') }}">{{ __('Contact') }}</a>
+                <a class="p-2 text-dark" href="{{ route('posts.index') }}">{{ __('Blog Posts') }}</a>
+                <a class="p-2 text-dark" href="{{ route('posts.create') }}">{{ __('Add') }}</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -57,6 +57,10 @@
                                 </li>
                             @endif
                         @else
+                            <a class="p-2 text-dark" 
+                                href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
+                                {{ __('Profile') }}
+                            </a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

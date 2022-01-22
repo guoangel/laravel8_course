@@ -11,7 +11,11 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    public const LOCALES = [
+        'en' => 'English',
+        'es' => 'Español',
+        'de' => 'Deutsch'
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -77,5 +81,10 @@ class User extends Authenticatable
             return $query->where('commentable_id', '=', $post->id)
                 ->where('commentable_type', '=', BlogPost::class);
         });
+    }
+
+    public function scopeThatIsAnAdmin(Builder $query)
+    {
+        return $query->where('is_admin', true);
     }
 }
