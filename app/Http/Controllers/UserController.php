@@ -6,13 +6,18 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUser;
 use App\Models\Image;
+use App\Services\Counter;
+use App\Contracts\CounterContract;
 
 class UserController extends Controller
 {
-    public function __construct()
+    private $counter;
+
+    public function __construct(CounterContract $counter)
     {
         $this->middleware('auth');
         $this->authorizeResource(User::class, 'user');
+        $this->counter = $counter;
     }
     /**
      * Display a listing of the resource.
@@ -53,9 +58,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', ['user' => $user]);
+        return view('users.show', [
+            'user' => $user,
+            'counter' => $this->counter->increment("user-{$user->id}")
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *

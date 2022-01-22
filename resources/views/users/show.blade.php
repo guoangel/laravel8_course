@@ -8,6 +8,7 @@
         </div>
         <div class="col-8">
             <h3>{{ $user->name }}</h3>
+            <p>Currently viewed by {{ $counter }} other users</p>
             <x-comment-form :id="$user->id" :name="route('users.comments.store', ['user' => $user->id])"/>
             <x-comment-list :comments="$user->commentsOn"/>
         </div>
