@@ -11,6 +11,8 @@ use App\Observers\BlogPostObserver;
 use App\Models\Comment;
 use App\Observers\CommentObserver;
 use App\Services\Counter;
+use App\Http\Resources\Comment as CommentResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -51,5 +53,8 @@ class AppServiceProvider extends ServiceProvider
             'App\Contracts\CounterContract',
             Counter::class
         );
+
+        //CommentResource::withoutWrapping();
+        JsonResource::withoutWrapping();
     }
 }
